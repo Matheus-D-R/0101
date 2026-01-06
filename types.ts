@@ -1,8 +1,12 @@
-export interface GlobalWindow extends Window {
-  fbq: (type: string, eventName: string, params?: Record<string, unknown>) => void;
-}
+import React from 'react';
 
-declare let window: GlobalWindow;
+// Extend the global Window interface to include Facebook Pixel
+declare global {
+  interface Window {
+    fbq: (type: string, eventName: string, params?: Record<string, unknown>) => void;
+    _fbq?: any;
+  }
+}
 
 export interface Testimonial {
   id: number;
